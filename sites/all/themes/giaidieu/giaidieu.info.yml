@@ -1,0 +1,25 @@
+# This theme is made by giaidieu.com on 26/06/2018.
+name: Giai Điệu
+type: theme
+base theme: bootstrap
+description: 'A special theme made by giaidieu.com'
+
+package: 'Giai Điệu'
+version: VERSION
+project: 'giaidieu'
+core: 8.x
+
+libraries:
+ - giaidieu/global-styling
+ - giaidieu/global-scripts
+
+regions:
+  header: Header
+  navigation: Navigation
+  highlighted: Highlighted
+  breadcrumb: Breadcrumb
+  content_front: Content front
+  content: Content
+  footer: Footer
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'

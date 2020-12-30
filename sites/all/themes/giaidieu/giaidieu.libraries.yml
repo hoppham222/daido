@@ -1,0 +1,23 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/style.css: {}
+      css/style1.css: {}
+
+global-scripts:
+  version: VERSION
+  js:
+    js/hop.js: {}
+    js/script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery.ui.dialog
+
+home-styling:
+  css:
+    theme:
+      css/home.css: {}

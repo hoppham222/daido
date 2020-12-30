@@ -1,0 +1,11 @@
+custom-styling:
+  version: VERSION
+  css:
+    theme:
+      css/custom.css: {}
+
+custom:
+  js:
+    js/custom.js: {}
+  dependencies:
+    - core/jquery

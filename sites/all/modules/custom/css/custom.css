@@ -1,0 +1,21 @@
+/* Custom CSS created by giaidieu.com */
+
+.toolbar-tray a.toolbar-icon:hover, .toolbar-tray a.toolbar-icon.is-active, .toolbar-tray a.toolbar-icon:active, .toolbar-tray a.toolbar-icon:focus {
+  text-decoration: none;
+}
+
+.toolbar-tray a.toolbar-icon svg {
+  margin-left: -20px;
+  margin-right: 5px;
+  height: 1.2em;
+  width: auto;
+  vertical-align: bottom;
+}
+
+div.layout-container div.region-content {
+  padding-top: 20px;
+}
+
+body.path-admin header.content-header {
+  padding-bottom: 24px;
+}

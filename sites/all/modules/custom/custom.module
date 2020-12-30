@@ -1,0 +1,165 @@
+<?php
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\node\Entity\Node;
+use Drupal\user\Entity\User;
+use Drupal\webform\WebformSubmissionInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\file\Entity\File;
+
+/**
+ * @file
+ * Giai Điệu customization module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+//function custom_cron() {
+//}
+
+/**
+ * Implements hook_theme().
+ */
+// function custom_theme($existing, $type, $theme, $path) {\
+// }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+//function custom_preprocess_html(&$variables) {
+//}
+
+/**
+ * Implements hook_link_alter().
+ */
+//function custom_link_alter(&$variables) {
+  //kint($variables);
+//}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function custom_page_attachments(array &$attachments) {
+  //$current_path = \Drupal::service('path.current')->getPath();
+  //$path_args = explode('/', $current_path);
+  
+  // Get current theme.
+  //$theme = \Drupal::service('theme.manager')->getActiveTheme();
+  //kint($theme->getName());
+  
+  // Check admin page.
+  //$is_admin_page = \Drupal::service('router.admin_context')->isAdminRoute();
+  
+  // Add Google map SDK for all page.
+  //$attachments['#attached']['library'][] = 'custom/google_map';
+
+  // Add custom.js to every page.
+  //$attachments['#attached']['library'][] = 'custom/custom';
+
+  // Add custom.css to every page.
+  $attachments['#attached']['library'][] = 'custom/custom-styling';
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  //kint($form_id);
+  
+  switch ($form_id) {
+    case 'user_admin_settings':
+      // Hide some items if not admin.
+      if (\Drupal::currentUser()->id() != 1) {
+        $form['admin_role']['#access'] = false;
+        $form['registration_cancellation']['#access'] = false;
+        $form['mail_notification_address']['#access'] = false;
+        $form['anonymous_settings']['#access'] = false;
+      }
+      
+      break;
+  }
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function custom_user_login($account) {
+
+  // global $base_url;
+  // $response = new RedirectResponse($base_url);
+  // $response->send();
+  // return;
+}
+function custom_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Alter login form and add own custom submit handler.
+  $form['#submit'][] = 'custom_user_login_form_submit';
+}
+
+/**
+* Custom submit handler for login form.
+*/
+function custom_user_login_form_submit($form, FormStateInterface $form_state) {
+  $form_state->setRedirect('<front>');
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function custom_preprocess_page(&$variables) {
+  // kint($variables);
+
+}
+
+/**
+ * Implements hook_mail().
+ */
+function custom_mail($key, &$message, $params) {
+  //switch ($key) {
+    //case 'test':
+      //$message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+      //$message['headers']['Content-Transfer-Encoding'] = '8Bit';
+
+      //$message['from'] = \Drupal::config('system.site')->get('mail');
+      //$message['subject'] = $params['node_title'];
+      //$message['body'][] = $params['message'];
+      //break;
+  //}
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function custom_mail_alter(&$message) {
+  //if ($message['id'] == 'user_password_reset') {
+    //$message['send'] = FALSE;
+  //}
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function custom_preprocess_node(&$variables) {
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function custom_node_insert(\Drupal\Core\Entity\EntityInterface $node) {
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function custom_node_update(\Drupal\Core\Entity\EntityInterface $node) {
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function custom_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+}

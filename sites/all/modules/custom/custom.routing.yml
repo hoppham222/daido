@@ -1,0 +1,6 @@
+custom.content:
+  path: '/admin/test'
+  defaults:
+    _controller: '\Drupal\custom\Controller\customController::custom_test'
+  requirements:
+    _permission: 'access content'

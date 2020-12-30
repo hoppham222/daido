@@ -1,0 +1,5 @@
+# Schema for the configuration files of the Homeflow theme.
+
+homeflow.settings:
+  type: theme_settings
+  label: 'Homeflow settings'
